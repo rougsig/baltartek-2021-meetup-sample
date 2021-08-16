@@ -1,5 +1,6 @@
 ﻿@using Blazored.LocalStorage
 @inject ILocalStorageService storage;
+@inject IJSRuntime js;
 
 <div class="book-list">
     <div class="book-list__content content">
@@ -11,7 +12,8 @@
                 <div class="book__info">
                     <p class="book__year">@book.Year</p>
                     <p class="book__name">@book.Name</p>
-                    <button class="book__btn btn btn--text" @onclick="async () => await OnBookPressedAsync(book)">
+                    <button class="book__btn btn btn--text @GetButtonColorClass(book)"
+                        @onclick="async () => await OnBookPressedAsync(book)">
                         @GetButtonLabel(book)
                     </button>
                 </div>
@@ -23,11 +25,11 @@
 
 @code {
     private List<Book> books = new List<Book>();
-    private IEnumerable<Book> filtered
-      => books.Where(x => string.IsNullOrWhiteSpace(Search)
+    private IEnumerable<Book> filtered => books
+      .Where(x => string.IsNullOrWhiteSpace(Search)
         || Search.Length <= 1
         || x.Name.ToLower().Contains(Search.ToLower()))
-        .OrderBy(x => x.Name);
+      .OrderBy(x => x.Name);
 
     [CascadingParameter(Name = "User")]
     public string User { get; set; }
@@ -51,7 +53,10 @@
         switch (book.State)
         {
             case BookState.Available: await ReserveAsync(book); break;
-            case BookState.CommmingSoon when book.Holder == User: await ReleaseAsync(book); break;
+            case BookState.Taken when book.Holder == User: await ReleaseAsync(book); break;
+            case BookState.Taken when book.Holder != User:
+                await AlertAsync($"Книга находится у {book.Holder}.\nЕсли хорошо попросишь, может даст почитать...");
+                break;
             default: break;
         }
     }
@@ -83,10 +88,20 @@
     {
         BookState.Available => "Взять книгу",
         BookState.Taken when book.Holder == User => "Вернуть",
+        BookState.Taken when book.Holder != User => "Узнать у кого",
         BookState.CommmingSoon => "Скоро",
+        _ => throw new NotImplementedException(book.State.ToString())
+    };
+
+    private string GetButtonColorClass(Book book) => book.State switch
+    {
+        BookState.Available => string.Empty,
+        BookState.Taken => "btn--maroon",
+        BookState.CommmingSoon => "btn--gray",
         _ => throw new NotImplementedException()
     };
 
+    private async Task AlertAsync(string message) => await js.InvokeVoidAsync("alert", message);
 
     private record Book(BookState State, int Year, string ImageUrl, string Name, string Holder = null);
 
@@ -99,11 +114,11 @@
 
     private static Book[] defaultBooks = new[]
     {
-    new Book(BookState.Available, 2019, "images/books/CSharp.png", "CLR via C#. Программирование на платформе Microsoft .NET Framework 4.5 на языке C# Рихтер Джеффри | Рихтер Джеффри"),
-    new Book(BookState.Available, 2018, "images/books/Evans_DDD.png", "Предметно-ориентированное проектирование (DDD). Структуризация сложных программных систем | Эванс Эрик"),
-    new Book(BookState.Available, 2018, "images/books/Fowler.png", "Шаблоны корпоративных приложений | Ми Роберт, Фаулер Мартин"),
-    new Book(BookState.Available, 2018, "images/books/Martin_Arch.png", "Чистая архитектура. Искусство разработки программного обеспечения Мартин Роберт | Мартин Роберт"),
+    new Book(BookState.CommmingSoon, 2019, "images/books/CSharp.png", "CLR via C#. Программирование на платформе Microsoft .NET Framework 4.5 на языке C# Рихтер Джеффри | Рихтер Джеффри"),
+    new Book(BookState.Taken, 2018, "images/books/Evans_DDD.png", "Предметно-ориентированное проектирование (DDD). Структуризация сложных программных систем | Эванс Эрик", "Тимошинин М.С."),
+    new Book(BookState.Taken, 2018, "images/books/Fowler.png", "Шаблоны корпоративных приложений | Ми Роберт, Фаулер Мартин", "Тимошинин М.С."),
+    new Book(BookState.Taken, 2018, "images/books/Martin_Arch.png", "Чистая архитектура. Искусство разработки программного обеспечения Мартин Роберт | Мартин Роберт", "Тимошинин М.С."),
     new Book(BookState.Available, 2021, "images/books/Martin_Prog.png", "Идеальный программист. Как стать профессионалом разработки ПО | Мартин Роберт К."),
-    new Book(BookState.CommmingSoon, 2018, "images/books/Vernon_DDD.png", "Реализация методов предметно-ориентированного проектирования | Вернон Вон"),
+    new Book(BookState.Available, 2018, "images/books/Vernon_DDD.png", "Реализация методов предметно-ориентированного проектирования | Вернон Вон"),
     };
 }

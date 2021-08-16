@@ -38,6 +38,14 @@ html, body {
   color: #0000b5;
 }
 
+.btn--gray {
+  color: gray;
+}
+
+.btn--maroon {
+  color: maroon;
+} 
+
 .content {
   width: 100%;
   max-width: 960px;
