@@ -1,73 +1,81 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Library</title>
-  <link rel="stylesheet" href="styles/reset.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-  </style>
-  <link rel="stylesheet" href="styles/main.css">
-</head>
-<body>
-<header class="header">
-  <div class="header__content content">
-    <div class="header__logo">LOGO</div>
-    <form class="header__search search-bar" action="#">
-      <input class="search-bar__input" placeholder="Я ищу..." name="query" type="text" required>
-      <button class="search-bar__btn btn btn--search" type="submit">Search</button>
-    </form>
-  </div>
-</header>
-<div class="book-list">
-  <div class="book-list__content content">
-    <div class="book-list__item book">
-      <img class="book__image" src="https://placekitten.com/600/360"/>
-      <div class="book__info">
-        <p class="book__year">1975</p>
-        <p class="book__name">Котики</p>
-        <button class="book__btn btn btn--text">Взять книгу</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Library</title>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header__content content">
+        <div class="header__logo">LOGO</div>
+        <form class="header__search search-bar" action="#">
+          <input class="search-bar__input" placeholder="Я ищу..." name="query" type="text" required />
+          <button class="search-bar__btn btn btn--search" type="submit">Search</button>
+        </form>
+      </div>
+    </header>
+    <div class="book-list">
+      <div class="book-list__content content">
+        <div class="book-list__item book">
+          <img class="book__image" src="https://placekitten.com/600/360" />
+          <div class="book__info">
+            <p class="book__year">1975</p>
+            <p class="book__name">Котики</p>
+            <button class="book__btn btn btn--text">Взять книгу</button>
+          </div>
+        </div>
+        <div class="book-list__item book">
+          <img class="book__image" src="https://placekitten.com/600/360" />
+          <div class="book__info">
+            <p class="book__year">1975</p>
+            <p class="book__name">Эпическая история двух легендарных котов</p>
+            <button class="book__btn btn btn--text">Взять книгу</button>
+          </div>
+        </div>
+        <div class="book-list__item book book--on-hands">
+          <img class="book__image" src="https://placekitten.com/600/360" />
+          <div class="book__info">
+            <p class="book__year">1975</p>
+            <p class="book__name">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias eaque eveniet exercitationem, ipsum iure iusto nam nulla optio quod voluptas. Cum
+              dolorem eaque esse id iure libero minima, perferendis ut!
+            </p>
+            <button class="book__btn btn btn--text">Вернуть книгу</button>
+          </div>
+        </div>
+        <div class="book-list__item book book--on-hands">
+          <img class="book__image" src="https://placekitten.com/600/360" />
+          <div class="book__info">
+            <p class="book__year">1975</p>
+            <p class="book__name">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias eaque eveniet exercitationem, ipsum iure iusto nam nulla optio quod voluptas. Cum
+              dolorem eaque esse id iure libero minima, perferendis ut!
+            </p>
+            <button class="book__btn btn btn--text">Вернуть книгу</button>
+          </div>
+        </div>
+        <div class="book-list__item book book--soon">
+          <img class="book__image" src="https://placekitten.com/600/360" />
+          <div class="book__info">
+            <p class="book__year">1966</p>
+            <p class="book__name">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias eaque eveniet exercitationem, ipsum iure iusto nam nulla optio quod voluptas. Cum
+              dolorem eaque esse id iure libero minima, perferendis ut!
+            </p>
+            <button class="book__btn btn btn--text">Скоро</button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="book-list__item book">
-      <img class="book__image" src="https://placekitten.com/600/360"/>
-      <div class="book__info">
-        <p class="book__year">1975</p>
-        <p class="book__name">Эпическая история двух легендарных котов</p>
-        <button class="book__btn btn btn--text">Взять книгу</button>
+    <footer class="footer">
+      <div class="footer__content content">
+        <p class="footer__copyright">© 2021 EpicCats, Inc.</p>
       </div>
-    </div>
-    <div class="book-list__item book book--on-hands">
-      <img class="book__image" src="https://placekitten.com/600/360"/>
-      <div class="book__info">
-        <p class="book__year">1975</p>
-        <p class="book__name">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias eaque eveniet
-          exercitationem,
-          ipsum iure iusto nam nulla optio quod voluptas. Cum dolorem eaque esse id iure libero minima, perferendis
-          ut!</p>
-        <button class="book__btn btn btn--text">Взять книгу</button>
-      </div>
-    </div>
-    <div class="book-list__item book book--on-hands">
-      <img class="book__image" src="https://placekitten.com/600/360"/>
-      <div class="book__info">
-        <p class="book__year">1975</p>
-        <p class="book__name">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias eaque eveniet
-          exercitationem,
-          ipsum iure iusto nam nulla optio quod voluptas. Cum dolorem eaque esse id iure libero minima, perferendis
-          ut!</p>
-        <button class="book__btn btn btn--text">Взять книгу</button>
-      </div>
-    </div>
-  </div>
-</div>
-<footer class="footer">
-  <div class="footer__content content">
-    <p class="footer__copyright">© 2021 EpicCats, Inc.</p>
-  </div>
-</footer>
-</body>
+    </footer>
+  </body>
 </html>
