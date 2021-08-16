@@ -1,0 +1,26 @@
+﻿@inherits LayoutComponentBase
+
+<header class="header">
+    <div class="header__content content">
+        <div class="header__logo">LOGO</div>
+        <form class="header__search search-bar" action="#">
+            <input class="search-bar__input" placeholder="Я ищу..." name="query" type="text" required
+                   @bind="this.search" @bind:event="oninput">
+            <button class="search-bar__btn btn btn--search" type="submit">Search</button>
+        </form>
+    </div>
+</header>
+
+<CascadingValue Name="search" Value="this.search">
+    @Body
+</CascadingValue>
+
+<footer class="footer">
+    <div class="footer__content content">
+        <p class="footer__copyright">© 2021 EpicCats, Inc.</p>
+    </div>
+</footer>
+
+@code {
+    private string search;
+}

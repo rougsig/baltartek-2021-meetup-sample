@@ -1,0 +1,137 @@
+﻿.book-list {
+  overflow-y: scroll;
+  max-height: calc(100vh - 56px * 2);
+}
+
+
+.book-list__content {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  align-content: flex-start;
+}
+
+.book-list__item {
+  width: calc(33.333% - (16px * 2 / 3));
+  box-sizing: border-box;
+  margin-right: 16px;
+  margin-top: 16px;
+}
+
+  .book-list__item:nth-child(3n) {
+    margin-right: 0;
+  }
+
+.book {
+  background: #FFFFFF;
+  border-radius: 8px;
+  color: #151515;
+  overflow: hidden;
+  position: relative;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.book__image {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.book__info {
+  background: #FFFFFF;
+  height: 88px;
+  width: 100%;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+  padding: 8px 12px 0;
+  box-sizing: border-box;
+}
+
+.book__year {
+  position: absolute;
+  top: -12px;
+  right: 0;
+  font-size: 12px;
+  z-index: 1;
+  height: 12px;
+  background: #FFFFFF;
+  padding: 2px 0 0 2px;
+  border-top-left-radius: 4px;
+}
+
+.book__name {
+  line-height: 24px;
+  height: 48px;
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book__btn {
+  width: 50%;
+  margin-left: 50%;
+  text-align: right;
+}
+
+
+.book--on-hands {
+  cursor: not-allowed;
+  position: relative;
+}
+
+  .book--on-hands:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.75);
+    height: calc(100% - 88px);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
+
+  .book--on-hands:after {
+    content: "Книга на руках";
+    position: absolute;
+    z-index: 3;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+.book--soon {
+  cursor: not-allowed;
+  position: relative;
+}
+
+  .book--soon:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.75);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
+
+  .book--soon:after {
+    content: "Скоро";
+    position: absolute;
+    z-index: 3;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
