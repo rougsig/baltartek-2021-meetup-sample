@@ -3,11 +3,10 @@
 <header class="header">
     <div class="header__content content">
         <div class="header__logo">LOGO</div>
-        <form class="header__search search-bar" action="#">
+        <div class="header__search search-bar">
             <input class="search-bar__input" placeholder="Я ищу..." name="query" type="text" required
                    @bind="this.search" @bind:event="oninput">
-            <button class="search-bar__btn btn btn--search" type="submit">Search</button>
-        </form>
+        </div>
     </div>
 </header>
 
