@@ -1,7 +1,25 @@
-html, body {
-  font-family: 'Roboto', sans-serif;
+/* roboto-regular - latin_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/roboto-v27-latin_cyrillic-regular.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */ url("../fonts/roboto-v27-latin_cyrillic-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-700 - latin_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/roboto-v27-latin_cyrillic-700.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */ url("../fonts/roboto-v27-latin_cyrillic-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
   background: #151515;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .content {
@@ -43,6 +61,11 @@ html, body {
   margin: auto;
 }
 
+.book-list {
+  overflow-y: scroll;
+  max-height: calc(100vh - 56px - 56px);
+}
+
 .book-list__content {
   display: flex;
   flex-wrap: wrap;
@@ -62,7 +85,7 @@ html, body {
 }
 
 .book {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 8px;
   color: #151515;
   overflow: hidden;
@@ -82,7 +105,7 @@ html, body {
 }
 
 .book__info {
-  background: #FFFFFF;
+  background: #ffffff;
   height: 88px;
   width: 100%;
   margin-top: auto;
@@ -99,7 +122,7 @@ html, body {
   font-size: 12px;
   z-index: 1;
   height: 12px;
-  background: #FFFFFF;
+  background: #ffffff;
   padding: 2px 0 0 2px;
   border-top-left-radius: 4px;
 }
@@ -126,7 +149,7 @@ html, body {
 .book--on-hands:before {
   content: "";
   background: rgba(0, 0, 0, 0.75);
-  height: 100%;
+  height: calc(100% - 88px);
   width: 100%;
   position: absolute;
   top: 0;
@@ -139,18 +162,53 @@ html, body {
   position: absolute;
   z-index: 3;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
 }
 
+.book--on-hands .book__btn {
+  color: maroon;
+}
+
+.book--soon {
+  cursor: not-allowed;
+  position: relative;
+}
+
+.book--soon:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.75);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.book--soon:after {
+  content: "Скоро";
+  position: absolute;
+  z-index: 3;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.book--soon .book__btn {
+  color: gray;
+}
+
 .footer {
-  background: #FFFFFF;
+  background: #ffffff;
   height: 56px;
   color: #151515;
-  margin-top: 32px;
 }
 
 .footer__content {
@@ -161,7 +219,7 @@ html, body {
 }
 
 .header {
-  background: #FFFFFF;
+  background: #ffffff;
   height: 56px;
   color: #151515;
 }
