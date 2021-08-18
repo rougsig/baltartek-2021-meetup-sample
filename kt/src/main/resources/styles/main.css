@@ -76,7 +76,7 @@ body {
 .book-list__item {
   width: calc(33.333% - (16px * 2 / 3));
   box-sizing: border-box;
-  margin-right: 16px;ц
+  margin-right: 16px;
   margin-top: 16px;
 }
 
